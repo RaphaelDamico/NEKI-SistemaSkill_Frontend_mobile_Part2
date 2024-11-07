@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     arrowContainer: {
@@ -8,6 +9,6 @@ export const styles = StyleSheet.create({
     },
     pageCounter: {
         fontWeight: "600",
-        color: "#1A374B",
+        color: THEME.COLORS.BLUE_700,
     }
 });

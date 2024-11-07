@@ -8,6 +8,7 @@ import { NavigationProp } from "@react-navigation/native";
 import { RootPublicStackParamList } from "../../interfaces";
 import LoadingIcon from "../LoadingIcon";
 import { signupUser } from "../../api";
+import { THEME } from "../../styles/theme";
 
 export default function RegisterForm({ navigation }: { navigation: NavigationProp<RootPublicStackParamList> }) {
     const [hasError, setHasError] = useState<boolean>(false);
@@ -103,12 +104,12 @@ export default function RegisterForm({ navigation }: { navigation: NavigationPro
                 <Button
                     content={loading ? <LoadingIcon /> : "Cadastrar"}
                     onPress={() => { registerUser() }}
-                    style={{ alignSelf: "center", backgroundColor: "#1A374B", width: "80%" }}
+                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.BLUE_700, width: "80%" }}
                 />
                 <Button
                     content={"Cancelar"}
                     onPress={() => { navigation.navigate("LoginScreen") }}
-                    style={{ alignSelf: "center", backgroundColor: "#4EB888", width: "80%" }}
+                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.GREEN, width: "80%" }}
                 />
             </View>
         </View>

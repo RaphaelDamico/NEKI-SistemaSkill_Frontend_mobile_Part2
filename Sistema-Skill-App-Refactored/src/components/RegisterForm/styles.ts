@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     formContainer: {
         width: "80%",
         height: 390,
-        backgroundColor: "#F9F9F9",
+        backgroundColor: THEME.COLORS.WHITE,
         borderRadius: 16,
         paddingVertical: 15,
         elevation: 10,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 10,
     },
     errorSpan: {
-        color: "red",
+        color: THEME.COLORS.RED,
         fontSize: 14,
     },
 });

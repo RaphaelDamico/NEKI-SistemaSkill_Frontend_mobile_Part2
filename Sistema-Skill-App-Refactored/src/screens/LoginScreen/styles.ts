@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     container: {
@@ -21,12 +22,12 @@ export const styles = StyleSheet.create({
         fontFamily: "Poppins-MediumItalic",
         fontSize: 50,
         fontWeight: "500",
-        color: "#F9F9F9",
+        color: THEME.COLORS.WHITE,
     },
     subTitle: {
         fontSize: 25,
         textAlign: "center",
-        color: "#F9F9F9",
+        color: THEME.COLORS.WHITE,
         fontWeight: "300"
     }
 });

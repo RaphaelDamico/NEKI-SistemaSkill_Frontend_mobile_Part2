@@ -6,6 +6,7 @@ import { Alert, Image, Text, View } from "react-native";
 import Button from "../Button";
 import Icon from "../Icon";
 import StarRating from "../StarRating";
+import { THEME } from "../../styles/theme";
 
 export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProps) {
     const [isEditing, setIsEditing] = useState(false);
@@ -49,7 +50,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                 />
             </View>
             <View style={styles.cardContent}>
-                <View style={{padding: 10, borderRadius: 50,backgroundColor: 'white', elevation: 10}}>
+                <View style={{padding: 10, borderRadius: 50,backgroundColor: THEME.COLORS.WHITE, elevation: 10}}>
                     <Image
                         source={{ uri: userSkill.skill.image }}
                         style={{ width: 50, height: 50, borderRadius: 50 }}

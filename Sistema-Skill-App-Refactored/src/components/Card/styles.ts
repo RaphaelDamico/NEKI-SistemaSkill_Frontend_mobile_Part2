@@ -1,8 +1,9 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     cardContainer: {
-        backgroundColor: "#F9F9F9",
+        backgroundColor: THEME.COLORS.WHITE,
         paddingHorizontal: 20,
         paddingVertical: 5,
         borderRadius: 16,
@@ -24,7 +25,7 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 20,
         fontWeight: "600",
-        color: "#356F7A",
+        color: THEME.COLORS.BLUE_700,
     },
     description: {
         fontWeight: "500",

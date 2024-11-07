@@ -9,6 +9,7 @@ import Button from "../Button";
 import { NavigationProp } from "@react-navigation/native";
 import { RootPublicStackParamList } from "../../interfaces";
 import LoadingIcon from "../LoadingIcon";
+import { THEME } from "../../styles/theme";
 
 export default function LoginForm({ navigation }: { navigation: NavigationProp<RootPublicStackParamList> }) {
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -120,12 +121,12 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
                 <Button
                     content={loading ? <LoadingIcon /> : "Entrar"}
                     onPress={() => { handleLogin() }}
-                    style={{ alignSelf: "center", backgroundColor: "#1A374B", width: "80%" }}
+                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.BLUE_700, width: "80%" }}
                 />
                 <Button
                     content={"Cadastrar"}
                     onPress={() => { navigation.navigate("RegisterScreen") }}
-                    style={{ alignSelf: "center", backgroundColor: "#4EB888", width: "80%" }}
+                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.GREEN, width: "80%" }}
                 />
             </View>
         </View>
