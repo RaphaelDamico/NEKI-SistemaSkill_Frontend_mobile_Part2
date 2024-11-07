@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     inputContainer: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
     label: {
         fontWeight: "500",
         fontSize: 16,
-        color: "#356F7A",
+        color: THEME.COLORS.BLUE_700,
         paddingHorizontal: "8%"
 
     },
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
         alignSelf: "center",
         borderRadius: 50,
         padding: 8,
-        backgroundColor: "#D3D3D3",
+        backgroundColor: THEME.COLORS.GREY,
         elevation: 5,
     },
     viewIcon: {

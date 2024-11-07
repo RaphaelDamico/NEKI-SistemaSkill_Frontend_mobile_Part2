@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     modalContainer: {
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
         top: "30%",
         left: "22%",
         transform: [{ translateX: -0.5 * (80 + 20) }, { translateY: -0.5 * (30 + 8) }],
-        backgroundColor: "#F9F9F9",
+        backgroundColor: THEME.COLORS.WHITE,
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 8,
@@ -28,7 +29,7 @@ export const styles = StyleSheet.create({
     modalHeader: {
         alignItems: "center",
         borderBottomWidth: 1,
-        borderBottomColor: "#DDD",
+        borderBottomColor: THEME.COLORS.GREY,
         height: 120,
         marginBottom: 20
     },
@@ -36,7 +37,7 @@ export const styles = StyleSheet.create({
     headerTitle: {
         fontSize: 25,
         fontWeight: "600",
-        color: "#356F7A"
+        color: THEME.COLORS.BLUE_700,
     },
     modalContent: {
         paddingHorizontal: 20,
@@ -49,7 +50,7 @@ export const styles = StyleSheet.create({
     modalEmptyText: {
         fontSize: 20,
         textAlign: "center",
-        color: "#356F7A",
+        color: THEME.COLORS.BLUE_700,
         fontWeight: "600"
     },
 });

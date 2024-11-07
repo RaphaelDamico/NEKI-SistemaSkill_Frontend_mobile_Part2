@@ -10,7 +10,7 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 interface IconProps {
     name: keyof typeof icons;
     style?: StyleProp<ViewStyle>;
-    color?: string;
+    color?: string | JSX.Element;
     size?: number | string;
     onPress?: () => void;
 };

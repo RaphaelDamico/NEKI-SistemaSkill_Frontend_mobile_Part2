@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useAuthUser } from "../../contexts/AuthUserContext";
 import Icon from "../Icon";
 import { HeaderProps } from "../../interfaces";
+import { THEME } from "../../styles/theme";
 
 export default function Header({ setIsModalOpen }: HeaderProps) {
     const [username, setUsername] = useState<string | null>(null);
@@ -30,7 +31,7 @@ export default function Header({ setIsModalOpen }: HeaderProps) {
                     content={
                         <Icon
                             name="logout"
-                            color="#F9F9F9"
+                            color={THEME.COLORS.WHITE}
                             size={18}
                         />
                     }

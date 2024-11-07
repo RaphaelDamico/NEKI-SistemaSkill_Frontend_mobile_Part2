@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     cardModalContainer: {
@@ -9,7 +10,7 @@ export const styles = StyleSheet.create({
     cardModalContent: {
         width: "100%",
         height: 50,
-        backgroundColor: "#356F7A",
+        backgroundColor: THEME.COLORS.BLUE_700,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "space-between",

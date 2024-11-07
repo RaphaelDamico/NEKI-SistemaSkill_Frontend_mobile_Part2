@@ -8,6 +8,7 @@ import CardModal from "../CardModal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Input from "../Input";
 import Pagination from "../Pagination";
+import { THEME } from "../../styles/theme";
 // import Pagination from "../Pagination";
 
 export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: ModalProps) {
@@ -146,13 +147,13 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
                         <View style={styles.buttonContainer}>
                             <Button
                                 content="Cancelar"
-                                style={{ backgroundColor: "#D9534F", width: 100 }}
+                                style={{ backgroundColor: THEME.COLORS.RED, width: 100 }}
                                 onPress={handleCancel}
                             />
                             <Button
                                 content="Salvar"
                                 style={{
-                                    backgroundColor: selectedSkills.length === 0 ? "#D3D3D3" : "#356F7A",
+                                    backgroundColor: selectedSkills.length === 0 ? THEME.COLORS.GREY : THEME.COLORS.BLUE_700,
                                     width: 100
                                 }}
                                 onPress={handleSave}

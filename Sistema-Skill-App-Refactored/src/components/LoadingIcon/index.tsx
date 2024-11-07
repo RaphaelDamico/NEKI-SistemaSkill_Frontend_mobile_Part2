@@ -1,6 +1,7 @@
 import { Animated, Easing } from "react-native";
 import AntDesign from '@expo/vector-icons/AntDesign';
 import { useEffect, useRef } from "react";
+import { THEME } from "../../styles/theme";
 
 
 export default function LoadingIcon() {
@@ -26,7 +27,8 @@ export default function LoadingIcon() {
         <Animated.View style={{ transform: [{ rotate: spin }] }}>
             <AntDesign
                 name="loading1"
-                size={24} color="#F9F9F9" />
+                size={24} 
+                color={THEME.COLORS.WHITE} />
         </Animated.View>
     );
 };

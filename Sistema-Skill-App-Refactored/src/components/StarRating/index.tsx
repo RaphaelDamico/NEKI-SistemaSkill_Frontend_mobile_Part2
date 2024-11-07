@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { styles } from "./styles";
 import Button from "../Button";
 import { StarRatingProps } from "../../interfaces";
+import { THEME } from "../../styles/theme";
 
 export default function StarRating({ rating, onRatingChange, isEditing, onSave }: StarRatingProps) {
     const [tempRating, setTempRating] = useState(rating);
@@ -21,7 +22,7 @@ export default function StarRating({ rating, onRatingChange, isEditing, onSave }
                     key={star}
                     style={[
                         styles.star,
-                        { color: star <= tempRating ? "#FFD700" : "#CCC" }
+                        { color: star <= tempRating ? THEME.COLORS.YELLOW : THEME.COLORS.GREY }
                     ]}
                     onPress={() => handlePress(star)}
                 >
