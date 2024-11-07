@@ -27,8 +27,12 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
                 const filteredSkills = (data?.content ?? []).filter(skill =>
                     !userSkills.some(userSkill => userSkill.skill.skillId === skill.skillId)
                 );
+                const updatedSkills = filteredSkills.map(skill => ({
+                    ...skill,
+                    checked: selectedSkills.some(s => s.skillId === skill.skillId),
+                }));
                 setSkillsPage({
-                    content: filteredSkills,
+                    content: updatedSkills,
                     size: data?.size ?? 0,
                     totalElements: data?.totalElements ?? 0,
                     totalPages: data?.totalPages ?? 0,
@@ -39,7 +43,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
             }
         };
         getSkillsList();
-    }, [userSkills, page, size, sort, filter]);
+    }, [userSkills, page, size, sort, filter, selectedSkills]);
 
     const handleChange = (skill: Skill) => {
         setSelectedSkills((prevSelected) => {

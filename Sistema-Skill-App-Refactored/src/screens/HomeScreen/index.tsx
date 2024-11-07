@@ -18,7 +18,7 @@ export default function HomeScreen() {
     const [skillToDelete, setSkillToDelete] = useState<string | null>(null);
     const [inputValue, setInputValue] = useState<string>("");
     const [filter, setFilter] = useState<string>("");
-    const [timer, setTimer] = useState<NodeJS.Timeout | undefined>(undefined);    const [page, setPage] = useState(0);
+    const [timer, setTimer] = useState<NodeJS.Timeout | undefined>(undefined); const [page, setPage] = useState(0);
     const [size] = useState(3);
     const [sort] = useState("skill.skillName,asc");
 
@@ -36,7 +36,7 @@ export default function HomeScreen() {
             if (data) {
                 setUserSkillList({ ...data });
             } else {
-                console.error("Falha ao buscar skills do usuário: os dados estão nulos.");
+                setUserSkillList(null);
             }
 
         } catch (error) {
@@ -67,11 +67,10 @@ export default function HomeScreen() {
     const handleDeleteUserSkill = async (userSkillId: string) => {
         try {
             await deleteUserSkill(userSkillId);
-            const data = await getUserSkills(page, size, sort);
-            if (data?.content.length === 0) {
-                setUserSkillList(null);
+            if (userSkillList?.content.length === 1 && page > 0) {
+                setPage(page - 1);
             } else {
-                setUserSkillList(data);
+                await getUserSkillsList();
             }
             setIsDeleteModalOpen(false);
         } catch (error) {
@@ -94,6 +93,7 @@ export default function HomeScreen() {
         }
         setTimer(setTimeout(() => {
             setFilter(value);
+            setPage(0);
         }, 1000));
     };
 
@@ -119,12 +119,12 @@ export default function HomeScreen() {
                 <></>
             )}
             {userSkillList?.content && userSkillList.content.length > 0 ? (
-                            <Pagination
-                            page={page}
-                            handlePageChange={setPage}
-                            totalPages={userSkillList?.totalPages || 0}
-                        />
-                        ) : <></>}
+                <Pagination
+                    page={page}
+                    handlePageChange={setPage}
+                    totalPages={userSkillList?.totalPages || 0}
+                />
+            ) : <></>}
             <Modal
                 isVisibleModal={isModalOpen}
                 onCancel={handleCloseModal}
