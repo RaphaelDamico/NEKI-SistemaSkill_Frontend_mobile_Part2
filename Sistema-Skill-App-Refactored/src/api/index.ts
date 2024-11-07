@@ -4,7 +4,7 @@ import { IUserCredentials, Page, Skill, SkillModel, UpdateUserSkill, UpdateUserS
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const api = axios.create({
-    baseURL: " https://a346-138-117-221-170.ngrok-free.app/"
+    baseURL: "  https://72f7-138-117-221-170.ngrok-free.app/"
 });
 
 const handleRegisterError = (error: unknown) => {

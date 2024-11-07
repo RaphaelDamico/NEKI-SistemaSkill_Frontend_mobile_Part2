@@ -4,7 +4,7 @@ import { THEME } from "../../styles/theme";
 export const styles = StyleSheet.create({
     formContainer: {
         width: "80%",
-        height: 390,
+        minHeight: 300,
         backgroundColor: THEME.COLORS.WHITE,
         borderRadius: 16,
         paddingVertical: 15,
@@ -15,10 +15,11 @@ export const styles = StyleSheet.create({
         gap: 10,
     },
     errorContainer: {
-        paddingHorizontal: 10,
+        paddingHorizontal: 20,
     },
     errorSpan: {
         color: THEME.COLORS.RED,
         fontSize: 14,
+        fontWeight: "600"
     },
 });
