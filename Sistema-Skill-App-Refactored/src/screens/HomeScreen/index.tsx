@@ -10,6 +10,7 @@ import { deleteUserSkill, getUserSkills } from "../../api";
 import { styles } from "./styles";
 import Input from "../../components/Input";
 import Pagination from "../../components/Pagination";
+import EmptyListCard from "../../components/EmptyListCard";
 
 export default function HomeScreen() {
     const [userSkillList, setUserSkillList] = useState<Page<UserSkill> | null>(null);
@@ -97,6 +98,8 @@ export default function HomeScreen() {
         }, 1000));
     };
 
+    const isSkillListEmpty = !userSkillList?.content || userSkillList.content.length ===0;
+
     return (
         <View style={styles.container}>
             <Header setIsModalOpen={setIsModalOpen} />
@@ -106,7 +109,19 @@ export default function HomeScreen() {
                 placeholder="Pesquisar skills do usuário"
                 label={""}
             />
-            {userSkillList && userSkillList.content ? (
+            {isSkillListEmpty ? (
+                filter ? (
+                    <EmptyListCard
+                        title="Nenhum resultado encontrado"
+                        text="Tente alterar o termo de pesquisa ou adicionar novas skills ao seu perfil."
+                    />
+                ) : (
+                    <EmptyListCard
+                        title="Sua lista de skills está vazia!"
+                        text="Que tal explorar novas competências e adicionar skills incríveis para impulsionar seu perfil?"
+                    />
+                )
+            ) : (
                 userSkillList.content.map((skill: UserSkill) => (
                     <Card
                         key={skill.userSkillId}
@@ -115,8 +130,6 @@ export default function HomeScreen() {
                         refreshSkills={getUserSkillsList}
                     />
                 ))
-            ) : (
-                <></>
             )}
             {userSkillList?.content && userSkillList.content.length > 0 ? (
                 <Pagination
