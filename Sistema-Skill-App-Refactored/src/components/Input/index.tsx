@@ -9,7 +9,12 @@ export default function Input({ label, type, value, onChangeText, placeholder, i
 
     return (
         <View style={styles.inputContainer}>
-            <Text nativeID={id} style={styles.label}>{label}</Text>
+            <Text
+                nativeID={id}
+                style={styles.label}
+            >
+                {label}
+            </Text>
             <TextInput
                 secureTextEntry={type === "password" && !showPassword}
                 value={value}

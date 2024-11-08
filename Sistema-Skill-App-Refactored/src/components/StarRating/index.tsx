@@ -33,7 +33,7 @@ export default function StarRating({ rating, onRatingChange, isEditing, onSave }
                 <Button
                     content={"Salvar"}
                     onPress={onSave}
-                    style={{ backgroundColor: "#1A374B", width: 80 }}
+                    style={{ backgroundColor: THEME.COLORS.BLUE_700, width: 80 }}
                     width={70}
                 />
             )}

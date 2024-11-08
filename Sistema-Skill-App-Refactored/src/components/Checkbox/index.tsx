@@ -7,10 +7,21 @@ import { CustomCheckboxProps } from "../../interfaces";
 export default function CustomCheckbox({ value, onValueChange, label, id }: CustomCheckboxProps) {
     return (
         <View style={styles.checkboxContainer}>
-            <Pressable onPress={() => onValueChange(!value)} style={[styles.checkbox, value && styles.checked]}>
-                {value && <Icon name={"check"} color="blue" size={15} />}
+            <Pressable
+                onPress={() => onValueChange(!value)}
+                style={[styles.checkbox, value && styles.checked]}
+            >
+                {value &&
+                    <Icon
+                        name={"check"}
+                        color="blue"
+                        size={15}
+                    />}
             </Pressable>
-            <Text nativeID={id} style={styles.checkboxLabel}>
+            <Text
+                nativeID={id}
+                style={styles.checkboxLabel}
+            >
                 {label}
             </Text>
         </View>

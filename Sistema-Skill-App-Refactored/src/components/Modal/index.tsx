@@ -18,7 +18,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
     const [page, setPage] = useState(0);
     const [size] = useState(4);
     const [sort, setSort] = useState<string>("skillName,asc");
-    const [sortIcon, setSortIcon] = useState<"arrowDown" | "arrowUp">("arrowDown");
+    const [sortIcon, setSortIcon] = useState<"arrowDown" | "arrowUp">("arrowUp");
     const [inputValue, setInputValue] = useState<string>("");
     const [filter, setFilter] = useState<string>("");
     const [timer, setTimer] = useState<NodeJS.Timeout | number | undefined>(undefined); (undefined);
@@ -80,7 +80,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
 
     function handleChangeSort() {
         setSort((prevSort) => {
-            const[field, order] = prevSort.split(",");
+            const [field, order] = prevSort.split(",");
             const newOrder = order === "asc" ? "desc" : "asc";
             setSortIcon(newOrder === "asc" ? "arrowUp" : "arrowDown");
             return `${field},${newOrder}`;
