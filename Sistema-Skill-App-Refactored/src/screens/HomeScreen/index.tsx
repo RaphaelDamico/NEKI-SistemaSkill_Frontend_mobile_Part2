@@ -12,6 +12,9 @@ import Input from "../../components/Input";
 import Pagination from "../../components/Pagination";
 import EmptyListCard from "../../components/EmptyListCard";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Button from "../../components/Button";
+import Icon from "../../components/Icon";
+import { THEME } from "../../styles/theme";
 
 export default function HomeScreen() {
     const [userSkillList, setUserSkillList] = useState<Page<UserSkill> | null>(null);
@@ -22,7 +25,8 @@ export default function HomeScreen() {
     const [filter, setFilter] = useState<string>("");
     const [timer, setTimer] = useState<NodeJS.Timeout | undefined>(undefined); const [page, setPage] = useState(0);
     const [size] = useState(2);
-    const [sort] = useState("skill.skillName,asc");
+    const [sort, setSort] = useState<string>("skill.skillName,asc");
+    const [sortIcon, setSortIcon] = useState<"arrowDown" | "arrowUp">("arrowUp");
 
     useEffect(() => {
         getUserSkillsList();
@@ -99,20 +103,42 @@ export default function HomeScreen() {
         }, 1000));
     };
 
-    const isSkillListEmpty = !userSkillList?.content || userSkillList.content.length ===0;
+    function handleChangeSort() {
+        setSort((prevSort) => {
+            const [field, order] = prevSort.split(",");
+            const newOrder = order === "asc" ? "desc" : "asc";
+            setSortIcon(newOrder === "asc" ? "arrowUp" : "arrowDown");
+            return `${field},${newOrder}`;
+        })
+    };
+
+    const isSkillListEmpty = !userSkillList?.content || userSkillList.content.length === 0;
 
     return (
         <SafeAreaView style={styles.container}>
             <Header setIsModalOpen={setIsModalOpen} />
-            <View style={styles.inputContainer}>
-            <View style={styles.inputContent}>
-            <Input
-                value={inputValue}
-                onChangeText={handleFilterChange}
-                placeholder="Filtrar Skills"
-                label={""}
-            />
-            </View>
+            <View style={styles.buttonInputContainer}>
+                <View>
+                    <Button
+                        content={
+                            <Icon
+                                name={sortIcon}
+                                color={THEME.COLORS.WHITE}
+                                size={30}
+                            />
+                        }
+                        style={{ backgroundColor: THEME.COLORS.BLUE_700, width: 80 }}
+                        onPress={handleChangeSort}
+                    />
+                </View>
+                <View style={styles.inputContainer}>
+                    <Input
+                        value={inputValue}
+                        onChangeText={handleFilterChange}
+                        placeholder="Filtrar Skills"
+                        label={""}
+                    />
+                </View>
             </View>
             {isSkillListEmpty ? (
                 filter ? (

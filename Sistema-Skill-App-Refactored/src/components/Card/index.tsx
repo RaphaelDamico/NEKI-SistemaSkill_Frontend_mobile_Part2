@@ -54,7 +54,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                 />
             </View>
             <View style={styles.cardContent}>
-                <View style={{padding: 10, borderRadius: 50,backgroundColor: THEME.COLORS.WHITE, elevation: 10}}>
+                <View style={{ padding: 10, borderRadius: 50, backgroundColor: THEME.COLORS.WHITE, elevation: 10 }}>
                     <Image
                         source={{ uri: userSkill.skill.image }}
                         style={{ width: 50, height: 50, borderRadius: 50 }}
@@ -63,7 +63,12 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                 </View>
                 <View style={styles.infoContent}>
                     <Text style={styles.title}>{userSkill.skill.skillName}</Text>
-                    <StarRating rating={level || 1} onRatingChange={handleRatingChange} isEditing={isEditing} onSave={handleSave} />
+                    <StarRating
+                        rating={level || 1}
+                        onRatingChange={handleRatingChange}
+                        isEditing={isEditing}
+                        onSave={handleSave}
+                    />
                     <Text style={styles.description}> {userSkill.skill.description}</Text>
                 </View>
             </View>

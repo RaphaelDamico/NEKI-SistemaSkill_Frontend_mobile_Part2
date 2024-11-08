@@ -13,7 +13,11 @@ export default function DeleteModal({ isVisibleModal, onCancel, onDelete }: Dele
                     <View style={styles.modalOverlay} />
                     <View style={styles.modalContainer}>
                         <View style={styles.modalHeader}>
-                            <Text style={{color: THEME.COLORS.BLUE_700, fontSize: 20, fontWeight: "500"}}>Deseja realmente deletar a Skill?</Text>
+                            <Text
+                                style={{ color: THEME.COLORS.BLUE_700, fontSize: 20, fontWeight: "500" }}
+                            >
+                                Deseja realmente deletar a Skill?
+                            </Text>
                         </View>
                         <View style={styles.buttonContainer}>
                             <Button

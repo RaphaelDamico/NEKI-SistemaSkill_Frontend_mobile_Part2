@@ -9,6 +9,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import Input from "../Input";
 import Pagination from "../Pagination";
 import { THEME } from "../../styles/theme";
+import Icon from "../Icon";
 // import Pagination from "../Pagination";
 
 export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: ModalProps) {
@@ -16,10 +17,11 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
     const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
     const [page, setPage] = useState(0);
     const [size] = useState(4);
-    const [sort] = useState("skillName,asc");
+    const [sort, setSort] = useState<string>("skillName,asc");
+    const [sortIcon, setSortIcon] = useState<"arrowDown" | "arrowUp">("arrowUp");
     const [inputValue, setInputValue] = useState<string>("");
     const [filter, setFilter] = useState<string>("");
-    const [timer, setTimer] = useState<NodeJS.Timeout | number | undefined>(undefined);(undefined);
+    const [timer, setTimer] = useState<NodeJS.Timeout | number | undefined>(undefined); (undefined);
 
     useEffect(() => {
         const getSkillsList = async () => {
@@ -76,6 +78,15 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
         }, 1000));
     };
 
+    function handleChangeSort() {
+        setSort((prevSort) => {
+            const [field, order] = prevSort.split(",");
+            const newOrder = order === "asc" ? "desc" : "asc";
+            setSortIcon(newOrder === "asc" ? "arrowUp" : "arrowDown");
+            return `${field},${newOrder}`;
+        })
+    };
+
     const handleSave = async () => {
         try {
             const userId = await AsyncStorage.getItem("userId");
@@ -112,12 +123,28 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
                     <View style={styles.modalContainer}>
                         <View style={styles.modalHeader}>
                             <Text style={styles.headerTitle}>Selecionar Skill</Text>
-                            <Input
-                                value={inputValue}
-                                onChangeText={handleFilterChange}
-                                placeholder="Filtrar Skills"
-                                label={""}
-                            />
+                            <View style={styles.buttonInputContainer}>
+                                <View>
+                                    <Button
+                                        content={
+                                            <Icon
+                                                name={sortIcon}
+                                                color={THEME.COLORS.WHITE}
+                                                size={30}
+                                            />
+                                        }
+                                        style={{ backgroundColor: THEME.COLORS.BLUE_700, width: 80 }}
+                                        onPress={handleChangeSort}
+                                    />
+                                </View>
+                                <View style={styles.inputContainer}>
+                                    <Input
+                                        value={inputValue}
+                                        onChangeText={handleFilterChange}
+                                        placeholder="Filtrar Skills"
+                                    />
+                                </View>
+                            </View>
                         </View>
                         <View style={styles.modalContent}>
                             {skillsPage?.content && skillsPage.content.length > 0 ? (
@@ -139,10 +166,10 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
                         </View>
                         {skillsPage?.content && skillsPage.content.length > 0 ? (
                             <Pagination
-                            page={page}
-                            handlePageChange={setPage}
-                            totalPages={skillsPage?.totalPages || 0}
-                        />
+                                page={page}
+                                handlePageChange={setPage}
+                                totalPages={skillsPage?.totalPages || 0}
+                            />
                         ) : <></>}
                         <View style={styles.buttonContainer}>
                             <Button

@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         elevation: 10
     },
     formContent: {
-        justifyContent:"space-around",
+        justifyContent: "space-around",
         minHeight: 325
     },
     buttonContainer: {

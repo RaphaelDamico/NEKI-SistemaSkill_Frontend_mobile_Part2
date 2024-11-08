@@ -21,6 +21,8 @@ export const styles = StyleSheet.create({
         position: "absolute",
         top: 0,
         left: 0,
+        bottom: 0,
+        right: 0,
         width: "100%",
         height: "100%",
         backgroundColor: "rgba(0, 0, 0, 0.55)",
@@ -30,7 +32,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         borderBottomWidth: 1,
         borderBottomColor: THEME.COLORS.GREY,
-        height: 120,
+        height: 110,
     },
 
     headerTitle: {
@@ -40,7 +42,18 @@ export const styles = StyleSheet.create({
     },
     modalContent: {
         paddingHorizontal: 20,
-        height:180,
+        height: 180,
+    },
+    buttonInputContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "flex-end",
+        width: "100%",
+        paddingHorizontal: "6%"
+    },
+    inputContainer: {
+        width: "65%",
+        left: "8%"
     },
     buttonContainer: {
         flexDirection: "row",

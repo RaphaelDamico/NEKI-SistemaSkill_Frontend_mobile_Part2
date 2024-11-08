@@ -5,7 +5,7 @@ import { useAuthUser } from "../contexts/AuthUserContext";
 const Routes = () => {
     const { signed } = useAuthUser()
 
-    return <>{signed ?  <PrivateStack /> : <PublicStack />}</>;
+    return <>{signed ? <PrivateStack /> : <PublicStack />}</>;
 };
 
 export default Routes;

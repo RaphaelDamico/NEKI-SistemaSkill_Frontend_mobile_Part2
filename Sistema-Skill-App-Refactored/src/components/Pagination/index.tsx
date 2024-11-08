@@ -26,8 +26,8 @@ export default function Pagination({ page, handlePageChange, totalPages }: Pagin
                 {page + 1}/{totalPages}
             </Text>
             <TouchableOpacity
-                style={[page === totalPages -1 && { opacity: 0.5 }]}
-                disabled={page === totalPages -1}
+                style={[page === totalPages - 1 && { opacity: 0.5 }]}
+                disabled={page === totalPages - 1}
                 onPress={() => {
                     if (page < totalPages - 1) handlePageChange((prev) => prev + 1);
                 }}
