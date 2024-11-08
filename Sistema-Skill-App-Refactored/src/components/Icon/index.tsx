@@ -5,12 +5,14 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { StyleProp, ViewStyle } from 'react-native';
 import SimpleLineIcons from '@expo/vector-icons/SimpleLineIcons';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+
 
 
 interface IconProps {
-    name: keyof typeof icons;
+    name: keyof typeof icons | string;
     style?: StyleProp<ViewStyle>;
-    color?: string;
+    color?: string | JSX.Element;
     size?: number | string;
     onPress?: () => void;
 };
@@ -47,11 +49,19 @@ const icons = {
     arrowLeft: {
         component: AntDesign,
         name: "arrowleft"
+    },
+    arrowDown: {
+        component: MaterialIcons,
+        name: "keyboard-arrow-down"
+    },
+    arrowUp: {
+        component: MaterialIcons,
+        name: "keyboard-arrow-up"
     }
 };
 
 export default function Icon({ name, style, color, size, onPress }: IconProps) {
-    const iconData = icons[name];
+    const iconData = icons[name as keyof typeof icons];
 
     if (!iconData) return null;
 

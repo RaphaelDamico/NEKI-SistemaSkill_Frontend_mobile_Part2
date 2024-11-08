@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     headerContainer: {
@@ -22,12 +23,12 @@ export const styles = StyleSheet.create({
         paddingHorizontal: "3%",
     },
     wellcomeText: {
-        color: "#356F7A",
+        color: THEME.COLORS.BLUE_700,
         fontWeight: "500",
         fontSize: 20
     },
     listSkillsText: {
-        color: "#356F7A",
+        color: THEME.COLORS.BLUE_700,
         fontWeight: "500",
         fontSize: 25
     },

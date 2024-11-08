@@ -6,6 +6,7 @@ import { Alert, Image, Text, View } from "react-native";
 import Button from "../Button";
 import Icon from "../Icon";
 import StarRating from "../StarRating";
+import { THEME } from "../../styles/theme";
 
 export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProps) {
     const [isEditing, setIsEditing] = useState(false);
@@ -16,11 +17,15 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
     };
 
     const handleSave = async () => {
-        if (level !== undefined) {
-            await updateUserSkillLevel({ userSkillId: userSkill.userSkillId, level });
-            setIsEditing(false);
-            refreshSkills();
-            Alert.alert("Level da skill atualizado")
+        try {
+            if (level !== undefined) {
+                await updateUserSkillLevel({ userSkillId: userSkill.userSkillId, level });
+                setIsEditing(false);
+                refreshSkills();
+                Alert.alert("Level da skill atualizado")
+            }
+        } catch (error) {
+            Alert.alert("Erro ao tentar atualizar o level da skill")
         }
     };
 
@@ -31,7 +36,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                     content={
                         <Icon
                             name={"edit"}
-                            color="#356F7A"
+                            color={THEME.COLORS.BLUE_700}
                             size={20}
                         />
                     }
@@ -41,7 +46,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                     content={
                         <Icon
                             name={"trash"}
-                            color="red"
+                            color={THEME.COLORS.RED}
                             size={20}
                         />
                     }
@@ -49,7 +54,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                 />
             </View>
             <View style={styles.cardContent}>
-                <View style={{padding: 10, borderRadius: 50,backgroundColor: 'white', elevation: 10}}>
+                <View style={{ padding: 10, borderRadius: 50, backgroundColor: THEME.COLORS.WHITE, elevation: 10 }}>
                     <Image
                         source={{ uri: userSkill.skill.image }}
                         style={{ width: 50, height: 50, borderRadius: 50 }}
@@ -58,7 +63,12 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                 </View>
                 <View style={styles.infoContent}>
                     <Text style={styles.title}>{userSkill.skill.skillName}</Text>
-                    <StarRating rating={level || 1} onRatingChange={handleRatingChange} isEditing={isEditing} onSave={handleSave} />
+                    <StarRating
+                        rating={level || 1}
+                        onRatingChange={handleRatingChange}
+                        isEditing={isEditing}
+                        onSave={handleSave}
+                    />
                     <Text style={styles.description}> {userSkill.skill.description}</Text>
                 </View>
             </View>

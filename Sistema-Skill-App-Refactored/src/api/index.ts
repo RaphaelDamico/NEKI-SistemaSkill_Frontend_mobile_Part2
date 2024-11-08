@@ -4,7 +4,7 @@ import { IUserCredentials, Page, Skill, SkillModel, UpdateUserSkill, UpdateUserS
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const api = axios.create({
-    baseURL: "https://05cc-138-117-221-170.ngrok-free.app/"
+    baseURL: "https://d4f6-138-117-221-170.ngrok-free.app/"
 });
 
 const handleRegisterError = (error: unknown) => {
@@ -138,7 +138,7 @@ export const getAllSkills = async (
         });
         return response.data;
     } catch (error) {
-        console.error("Erro ao buscar skills:", error);
+        console.log("Erro ao buscar skills:", error);
         return null;
     }
 };

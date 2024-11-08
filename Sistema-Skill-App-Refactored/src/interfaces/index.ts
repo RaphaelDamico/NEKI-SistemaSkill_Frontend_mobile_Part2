@@ -37,7 +37,7 @@ export interface DeleteModalProps {
 };
 
 export interface InputProps {
-    label: string;
+    label?: string;
     type?: string;
     value: string | undefined;
     onChangeText: (text: string) => void;

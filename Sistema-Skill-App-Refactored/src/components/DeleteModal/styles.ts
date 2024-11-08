@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { THEME } from "../../styles/theme";
 
 export const styles = StyleSheet.create({
     modalContainer: {
@@ -6,7 +7,7 @@ export const styles = StyleSheet.create({
         top: "45%",
         left: "23%",
         transform: [{ translateX: -0.5 * (80 + 20) }, { translateY: -0.5 * (30 + 8) }],
-        backgroundColor: "#F9F9F9",
+        backgroundColor: THEME.COLORS.WHITE,
         paddingVertical: 8,
         paddingHorizontal: 20,
         borderRadius: 8,

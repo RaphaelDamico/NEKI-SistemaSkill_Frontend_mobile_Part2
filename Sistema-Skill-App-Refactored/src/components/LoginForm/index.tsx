@@ -9,6 +9,7 @@ import Button from "../Button";
 import { NavigationProp } from "@react-navigation/native";
 import { RootPublicStackParamList } from "../../interfaces";
 import LoadingIcon from "../LoadingIcon";
+import { THEME } from "../../styles/theme";
 
 export default function LoginForm({ navigation }: { navigation: NavigationProp<RootPublicStackParamList> }) {
     const [errorMessage, setErrorMessage] = useState<string>("");
@@ -65,22 +66,26 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
 
     const handleLogin = async () => {
         setErrorMessage("");
+        if (!username) {
+            setErrorMessage("Digite um nome de usuário");
+            return;
+        }
+        if (!password) {
+            setErrorMessage("Digite uma senha");
+            return;
+        }
         try {
             await loginUser();
             await saveCredentials();
         } catch (error: unknown) {
-            if (error instanceof Error) {
-                if (error.message === "Login ou senha incorretos, verifique suas credenciais") {
-                    setErrorMessage(error.message);
-                } else {
-                    setErrorMessage("Falha no login. Verifique suas credenciais e tente novamente.");
-                }
-                console.error("Falha no login", error);
-            } else {
-                setErrorMessage("Ocorreu um erro desconhecido");
-                console.error("Erro desconhecido", error);
-            }
+            setErrorMessage("Falha no login. Verifique suas credenciais e tente novamente.");
+            console.error("Falha no login", error);
         }
+    };
+
+    function handleNavigateRegister() {
+        navigation.navigate("RegisterScreen")
+        setErrorMessage("")
     };
 
     const handleCheckboxChange = async () => {
@@ -117,16 +122,18 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
                         <Text style={styles.errorSpan}>{errorMessage}</Text>
                     </View>
                 )}
-                <Button
-                    content={loading ? <LoadingIcon /> : "Entrar"}
-                    onPress={() => { handleLogin() }}
-                    style={{ alignSelf: "center", backgroundColor: "#1A374B", width: "80%" }}
-                />
-                <Button
-                    content={"Cadastrar"}
-                    onPress={() => { navigation.navigate("RegisterScreen") }}
-                    style={{ alignSelf: "center", backgroundColor: "#4EB888", width: "80%" }}
-                />
+                <View style={styles.buttonContainer}>
+                    <Button
+                        content={loading ? <LoadingIcon /> : "Entrar"}
+                        onPress={() => { handleLogin() }}
+                        style={{ alignSelf: "center", backgroundColor: THEME.COLORS.BLUE_700, width: "80%" }}
+                    />
+                    <Button
+                        content={"Cadastrar"}
+                        onPress={handleNavigateRegister}
+                        style={{ alignSelf: "center", backgroundColor: THEME.COLORS.GREEN, width: "80%" }}
+                    />
+                </View>
             </View>
         </View>
     );
