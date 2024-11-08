@@ -30,7 +30,8 @@ export const styles = StyleSheet.create({
         color: THEME.COLORS.BLUE_700,
     },
     description: {
-        fontWeight: "500",
+        color: THEME.COLORS.BLUE_700,
+        fontWeight: "600",
         lineHeight: 18
     },
     buttonContainer: {
