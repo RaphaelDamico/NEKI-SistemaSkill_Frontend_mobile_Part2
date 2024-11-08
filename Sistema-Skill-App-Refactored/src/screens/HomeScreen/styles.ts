@@ -7,4 +7,14 @@ export const styles = StyleSheet.create({
         backgroundColor: THEME.COLORS.WHITE,
         gap: 15,
     },
+    inputContainer: {
+        width: "100%",
+        alignItems: "flex-end",
+        bottom: "1%",
+    },
+    inputContent: {
+        width: "50%",
+        right: "1.5%",
+
+    }
 });

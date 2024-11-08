@@ -15,7 +15,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
     const [skillsPage, setSkillsPage] = useState<Page<Skill> | null>(null);
     const [selectedSkills, setSelectedSkills] = useState<Skill[]>([]);
     const [page, setPage] = useState(0);
-    const [size] = useState(3);
+    const [size] = useState(4);
     const [sort] = useState("skillName,asc");
     const [inputValue, setInputValue] = useState<string>("");
     const [filter, setFilter] = useState<string>("");
@@ -115,7 +115,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
                             <Input
                                 value={inputValue}
                                 onChangeText={handleFilterChange}
-                                placeholder="Pesquisar skills"
+                                placeholder="Filtrar Skills"
                                 label={""}
                             />
                         </View>

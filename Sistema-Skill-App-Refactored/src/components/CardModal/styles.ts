@@ -9,7 +9,7 @@ export const styles = StyleSheet.create({
     },
     cardModalContent: {
         width: "100%",
-        height: 50,
+        height: 40,
         backgroundColor: THEME.COLORS.BLUE_700,
         flexDirection: "row",
         alignItems: "center",

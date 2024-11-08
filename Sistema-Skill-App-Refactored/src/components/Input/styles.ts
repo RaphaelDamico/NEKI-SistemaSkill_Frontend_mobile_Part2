@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     },
     input: {
         width: "90%",
+        height: 30,
         alignSelf: "center",
         borderRadius: 50,
         padding: 8,

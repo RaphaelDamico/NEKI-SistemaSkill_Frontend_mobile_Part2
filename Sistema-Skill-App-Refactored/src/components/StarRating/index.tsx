@@ -22,7 +22,7 @@ export default function StarRating({ rating, onRatingChange, isEditing, onSave }
                     key={star}
                     style={[
                         styles.star,
-                        { color: star <= tempRating ? THEME.COLORS.YELLOW : THEME.COLORS.GREY }
+                        { color: star <= tempRating ? THEME.COLORS.YELLOW : THEME.COLORS.BLUE_700 }
                     ]}
                     onPress={() => handlePress(star)}
                 >

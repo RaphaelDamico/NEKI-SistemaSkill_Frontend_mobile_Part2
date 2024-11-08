@@ -3,11 +3,12 @@ import { styles } from "./styles";
 import LoginForm from "../../components/LoginForm";
 import { NavigationProp } from "@react-navigation/native";
 import { RootPublicStackParamList } from "../../interfaces";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen({ navigation }: { navigation: NavigationProp<RootPublicStackParamList> }) {
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ImageBackground
                 source={require("../../../assets/images/background.png")}
                 style={styles.background}
@@ -18,6 +19,6 @@ export default function LoginScreen({ navigation }: { navigation: NavigationProp
                     <Text style={styles.subTitle}>Gerencie e desenvolva suas habilidades profissionais.</Text>
                 </View>
             </ImageBackground>
-        </View>
+        </SafeAreaView>
     )
 };

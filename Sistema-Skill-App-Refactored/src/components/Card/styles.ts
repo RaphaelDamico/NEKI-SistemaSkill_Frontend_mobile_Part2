@@ -19,7 +19,9 @@ export const styles = StyleSheet.create({
     },
     infoContent: {
         maxWidth: "80%",
-        gap: 8
+        gap: 8,
+        right: 12,
+        bottom: 5,
     },
 
     title: {

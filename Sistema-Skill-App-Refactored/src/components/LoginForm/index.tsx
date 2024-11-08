@@ -66,6 +66,14 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
 
     const handleLogin = async () => {
         setErrorMessage("");
+        if (!username) {
+            setErrorMessage("Digite um nome de usuário");
+            return;
+        }
+        if (!password) {
+            setErrorMessage("Digite uma senha");
+            return;
+        }
         try {
             await loginUser();
             await saveCredentials();
@@ -82,6 +90,11 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
                 console.error("Erro desconhecido", error);
             }
         }
+    };
+
+    function handleNavigateRegister(){
+        navigation.navigate("RegisterScreen") 
+        setErrorMessage("")
     };
 
     const handleCheckboxChange = async () => {
@@ -118,16 +131,18 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
                         <Text style={styles.errorSpan}>{errorMessage}</Text>
                     </View>
                 )}
-                <Button
-                    content={loading ? <LoadingIcon /> : "Entrar"}
-                    onPress={() => { handleLogin() }}
-                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.BLUE_700, width: "80%" }}
-                />
-                <Button
-                    content={"Cadastrar"}
-                    onPress={() => { navigation.navigate("RegisterScreen") }}
-                    style={{ alignSelf: "center", backgroundColor: THEME.COLORS.GREEN, width: "80%" }}
-                />
+                <View style={styles.buttonContainer}>
+                    <Button
+                        content={loading ? <LoadingIcon /> : "Entrar"}
+                        onPress={() => { handleLogin() }}
+                        style={{ alignSelf: "center", backgroundColor: THEME.COLORS.BLUE_700, width: "80%" }}
+                    />
+                    <Button
+                        content={"Cadastrar"}
+                        onPress={handleNavigateRegister}
+                        style={{ alignSelf: "center", backgroundColor: THEME.COLORS.GREEN, width: "80%" }}
+                    />
+                </View>
             </View>
         </View>
     );

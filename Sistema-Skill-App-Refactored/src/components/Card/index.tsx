@@ -32,7 +32,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                     content={
                         <Icon
                             name={"edit"}
-                            color="#356F7A"
+                            color={THEME.COLORS.BLUE_700}
                             size={20}
                         />
                     }
@@ -42,7 +42,7 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
                     content={
                         <Icon
                             name={"trash"}
-                            color="red"
+                            color={THEME.COLORS.RED}
                             size={20}
                         />
                     }
