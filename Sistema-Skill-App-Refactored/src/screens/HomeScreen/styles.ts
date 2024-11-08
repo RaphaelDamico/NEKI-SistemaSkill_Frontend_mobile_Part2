@@ -7,14 +7,16 @@ export const styles = StyleSheet.create({
         backgroundColor: THEME.COLORS.WHITE,
         gap: 15,
     },
-    inputContainer: {
+    buttonInputContainer: {
         width: "100%",
+        flexDirection: "row",
         alignItems: "flex-end",
+        justifyContent: "space-between",
+        paddingHorizontal: "3%",
         bottom: "1%",
     },
-    inputContent: {
-        width: "50%",
-        right: "1.5%",
-
-    }
+    inputContainer: {
+        width: "53%",
+        left: "8%"
+    },
 });

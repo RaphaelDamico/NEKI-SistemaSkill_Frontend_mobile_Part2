@@ -35,7 +35,7 @@ export default function Header({ setIsModalOpen }: HeaderProps) {
                             size={18}
                         />
                     }
-                    style={{ backgroundColor: "#1A374B", width: 80 }}
+                    style={{ backgroundColor: THEME.COLORS.BLUE_700, width: 80 }}
                     onPress={signOut}
                 />
                 <Text style={styles.wellcomeText}>Bem vindo(a) {username ? username : "Usuário"}</Text>
@@ -44,7 +44,7 @@ export default function Header({ setIsModalOpen }: HeaderProps) {
                 <Text style={styles.listSkillsText}>Lista de Skills</Text>
                 <Button
                     content={"+ Adicionar skill"}
-                    style={{ backgroundColor: "#1A374B", width: 180 }}
+                    style={{ backgroundColor: THEME.COLORS.BLUE_700, width: 180 }}
                     onPress={handleOpenModal}
                 />
             </View>

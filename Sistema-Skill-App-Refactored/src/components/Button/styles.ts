@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         borderRadius: 50,
-        color: THEME.COLORS.WHITE,
+        color: THEME.COLORS.BLUE_700,
     },
     buttonContent: {
         color: THEME.COLORS.WHITE,
