@@ -4,6 +4,8 @@ import { THEME } from "../../styles/theme";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
+        resizeMode: "cover",
+        justifyContent: "center",
     },
     background: {
         flex: 1,

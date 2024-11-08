@@ -8,9 +8,9 @@ export const styles = StyleSheet.create({
         left: "22%",
         transform: [{ translateX: -0.5 * (80 + 20) }, { translateY: -0.5 * (30 + 8) }],
         backgroundColor: THEME.COLORS.WHITE,
-        paddingVertical: 8,
+        paddingVertical: 15,
         paddingHorizontal: 20,
-        borderRadius: 8,
+        borderRadius: 16,
         elevation: 10,
         zIndex: 1000,
         width: "80%",
@@ -31,7 +31,6 @@ export const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: THEME.COLORS.GREY,
         height: 120,
-        marginBottom: 20
     },
 
     headerTitle: {
@@ -41,6 +40,7 @@ export const styles = StyleSheet.create({
     },
     modalContent: {
         paddingHorizontal: 20,
+        height:180,
     },
     buttonContainer: {
         flexDirection: "row",

@@ -11,6 +11,7 @@ import { styles } from "./styles";
 import Input from "../../components/Input";
 import Pagination from "../../components/Pagination";
 import EmptyListCard from "../../components/EmptyListCard";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
     const [userSkillList, setUserSkillList] = useState<Page<UserSkill> | null>(null);
@@ -20,7 +21,7 @@ export default function HomeScreen() {
     const [inputValue, setInputValue] = useState<string>("");
     const [filter, setFilter] = useState<string>("");
     const [timer, setTimer] = useState<NodeJS.Timeout | undefined>(undefined); const [page, setPage] = useState(0);
-    const [size] = useState(3);
+    const [size] = useState(2);
     const [sort] = useState("skill.skillName,asc");
 
     useEffect(() => {
@@ -101,14 +102,18 @@ export default function HomeScreen() {
     const isSkillListEmpty = !userSkillList?.content || userSkillList.content.length ===0;
 
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <Header setIsModalOpen={setIsModalOpen} />
+            <View style={styles.inputContainer}>
+            <View style={styles.inputContent}>
             <Input
                 value={inputValue}
                 onChangeText={handleFilterChange}
-                placeholder="Pesquisar skills do usuário"
+                placeholder="Filtrar Skills"
                 label={""}
             />
+            </View>
+            </View>
             {isSkillListEmpty ? (
                 filter ? (
                     <EmptyListCard
@@ -149,6 +154,6 @@ export default function HomeScreen() {
                 onCancel={handleCloseDeleteModal}
                 onDelete={handleConfirmDelete}
             />
-        </View>
+        </SafeAreaView>
     );
 }
