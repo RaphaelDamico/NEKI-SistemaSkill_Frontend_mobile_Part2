@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ModalProps, Skill, UserSkillRequest, Page } from "../../interfaces";
 import { addSkillToUser, getAllSkills } from "../../api";
 import { styles } from "./styles";
-import { FlatList, Text, TextInput, View } from "react-native";
+import { Alert, FlatList, Text, TextInput, View } from "react-native";
 import Button from "../Button";
 import CardModal from "../CardModal";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -92,7 +92,7 @@ export default function Modal({ isVisibleModal, onCancel, onSave, userSkills }: 
             setFilter("");
             setPage(0);
         } catch (error) {
-            console.error(error);
+            Alert.alert("Erro ao tentar adicionar skill para o usuário")
         }
     };
 

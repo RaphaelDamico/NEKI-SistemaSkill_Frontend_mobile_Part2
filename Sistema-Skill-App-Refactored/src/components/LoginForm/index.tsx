@@ -78,22 +78,13 @@ export default function LoginForm({ navigation }: { navigation: NavigationProp<R
             await loginUser();
             await saveCredentials();
         } catch (error: unknown) {
-            if (error instanceof Error) {
-                if (error.message === "Login ou senha incorretos, verifique suas credenciais") {
-                    setErrorMessage(error.message);
-                } else {
-                    setErrorMessage("Falha no login. Verifique suas credenciais e tente novamente.");
-                }
-                console.error("Falha no login", error);
-            } else {
-                setErrorMessage("Ocorreu um erro desconhecido");
-                console.error("Erro desconhecido", error);
-            }
+            setErrorMessage("Falha no login. Verifique suas credenciais e tente novamente.");
+            console.error("Falha no login", error);
         }
     };
 
-    function handleNavigateRegister(){
-        navigation.navigate("RegisterScreen") 
+    function handleNavigateRegister() {
+        navigation.navigate("RegisterScreen")
         setErrorMessage("")
     };
 

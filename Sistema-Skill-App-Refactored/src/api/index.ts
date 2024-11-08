@@ -138,7 +138,7 @@ export const getAllSkills = async (
         });
         return response.data;
     } catch (error) {
-        console.error("Erro ao buscar skills:", error);
+        console.log("Erro ao buscar skills:", error);
         return null;
     }
 };

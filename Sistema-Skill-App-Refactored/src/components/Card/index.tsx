@@ -17,11 +17,15 @@ export default function Card({ userSkill, deleteSkill, refreshSkills }: CardProp
     };
 
     const handleSave = async () => {
-        if (level !== undefined) {
-            await updateUserSkillLevel({ userSkillId: userSkill.userSkillId, level });
-            setIsEditing(false);
-            refreshSkills();
-            Alert.alert("Level da skill atualizado")
+        try {
+            if (level !== undefined) {
+                await updateUserSkillLevel({ userSkillId: userSkill.userSkillId, level });
+                setIsEditing(false);
+                refreshSkills();
+                Alert.alert("Level da skill atualizado")
+            }
+        } catch (error) {
+            Alert.alert("Erro ao tentar atualizar o level da skill")
         }
     };
 

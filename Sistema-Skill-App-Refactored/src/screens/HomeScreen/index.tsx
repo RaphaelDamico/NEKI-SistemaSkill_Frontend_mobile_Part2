@@ -76,7 +76,7 @@ export default function HomeScreen() {
             }
             setIsDeleteModalOpen(false);
         } catch (error) {
-            console.error(error);
+            Alert.alert("Erro ao tentar deletar a skill do usuário")
         }
     };
 
